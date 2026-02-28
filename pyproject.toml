@@ -1,59 +1,52 @@
 [build-system]
-requires = ["setuptools>=45", "wheel", "setuptools-scm[toml]>=6.2"]
+requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyics"
+version = "1.0.0"
 description = "Pyics - Data-Oriented Calendar Automation System"
 readme = "README.md"
-license = {file = "LICENSE"}
-authors = [{name = "Nnamdi Okpala", email = "engineering@obinexus.com"}]
-maintainers = [{name = "OBINexus Computing", email = "engineering@obinexus.com"}]
+license = { file = "LICENSE" }
+authors = [{ name = "Nnamdi Okpala", email = "engineering@obinexus.com" }]
+maintainers = [{ name = "OBINexus Computing", email = "engineering@obinexus.com" }]
 classifiers = [
-    "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers",
-    "Topic :: Software Development :: Libraries :: Python Modules",
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
 ]
 requires-python = ">=3.8"
-dynamic = ["version"]
-
-[tool.setuptools]
-package-dir = {"" = "src"}
-packages = ["pyics", "pyics.cli", "pyics.core", "pyics.audit", "pyics.config", "pyics.notify", "pyics.calendar", "pyics.v1", "pyics.v2", "pyics.v3_preview"]
-
-[project.scripts]
-pyics = "pyics.cli.main:main"
 dependencies = [
-    "click>=8.0.0",
-    "pydantic>=1.8.0",
-    "typing-extensions>=4.0.0",
-    "python-dateutil>=2.8.0",
-    "icalendar>=4.0.0",
+  "click>=8.0.0",
+  "pydantic>=1.8.0",
+  "typing-extensions>=4.0.0",
+  "python-dateutil>=2.8.0",
+  "icalendar>=4.0.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=6.0.0",
-    "pytest-cov>=2.10.0",
-    "black>=21.0.0",
-    "mypy>=0.910",
-    "flake8>=3.8.0",
+  "pytest>=6.0.0",
+  "pytest-cov>=2.10.0",
+  "black>=21.0.0",
+  "mypy>=0.910",
+  "flake8>=3.8.0",
 ]
 enterprise = [
-    "cryptography>=3.4.0",
-    "ldap3>=2.9.0",
+  "cryptography>=3.4.0",
+  "ldap3>=2.9.0",
 ]
 telemetry = [
-    "opentelemetry-api>=1.0.0",
-    "opentelemetry-sdk>=1.0.0",
-    "prometheus-client>=0.11.0",
+  "opentelemetry-api>=1.0.0",
+  "opentelemetry-sdk>=1.0.0",
+  "prometheus-client>=0.11.0",
 ]
 
 [project.scripts]
@@ -69,7 +62,11 @@ Repository = "https://github.com/obinexuscomputing/pyics"
 Changelog = "https://github.com/obinexuscomputing/pyics/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
-packages = ["pyics"]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyics*"]
 
 [tool.setuptools.package-data]
 "pyics.config" = ["*.json", "*.yaml", "*.toml"]
