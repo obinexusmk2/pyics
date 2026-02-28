@@ -24,6 +24,12 @@ classifiers = [
 requires-python = ">=3.8"
 dynamic = ["version"]
 
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["pyics", "pyics.cli", "pyics.core", "pyics.audit", "pyics.config", "pyics.notify", "pyics.calendar", "pyics.v1", "pyics.v2", "pyics.v3_preview"]
+
+[project.scripts]
+pyics = "pyics.cli.main:main"
 dependencies = [
     "click>=8.0.0",
     "pydantic>=1.8.0",
